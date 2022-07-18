@@ -10,13 +10,13 @@ if (isset($_POST['frmLogin'])) {
 
     if (mb_strlen($email) === 0)
         array_push($erreurs, "Veuillez saisir une adresse mail");
-
+    
     elseif (!(filter_var($email, FILTER_VALIDATE_EMAIL)))
         array_push($erreurs, "Veuillez saisir une adresse conforme");
 
     if (mb_strlen($mdp) === 0)
         array_push($erreurs, "Veuillez saisir un mot de passe");
-
+    
     if (count($erreurs) > 0) {
         $messageErreurs = "<ul>";
 
@@ -34,6 +34,15 @@ if (isset($_POST['frmLogin'])) {
 
     } else {
         if (verifierLogin($email,$mdp)) {
+            $recupDatasUser = "SELECT * FROM utilisateurs WHERE email='$email'";
+            if ($pdo = pdo()) {
+                $datasUser = $pdo->query($recupDatasUser);
+                $datasUser = $datasUser->fetchAll();
+                $_SESSION['prenom'] = $datasUser[0]['prenom'];
+                $_SESSION['nom'] = $datasUser[0]['nom'];
+                $_SESSION['role'] = $datasUser[0]['role'];
+            }
+
             $_SESSION['login'] = true;
             echo "<script>window.location.replace('http://localhost:8080/DWWM-Vernon-2022-PHP-Alibobo/')</script>";
         } else {
