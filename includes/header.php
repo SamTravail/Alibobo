@@ -8,13 +8,24 @@
     <link href="./assets/css/style.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.php?page=accueil">Accueil</a></li>
-                <li><a href="index.php?page=articles">Articles</a></li>
-                <li><a href="index.php?page=inscription">Inscription</a></li>
-                <li><a href="index.php?page=login">Login</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <?php
+    if (isset($_SESSION['nom']) && isset($_SESSION['prenom'])) {
+        echo "<p>Bonjour " . $_SESSION['prenom'] . " " . $_SESSION['nom'] . "</p>";
+    }
+    ?>
+    <nav>
+        <ul>
+            <li><a href="index.php?page=accueil">Accueil</a><a href="admin/index.php?page=admin">Admin</a></li>
+            <li><a href="index.php?page=articles">Articles</a></li>
+            <li><a href="index.php?page=inscription">Inscription</a></li>
+            <?php
+            if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
+                echo '<li><a href="index.php?page=logout">Logout</a></li>';
+            } else {
+                echo '<li><a href="index.php?page=login">Login</a></li>';
+            }
+            ?>
+        </ul>
+    </nav>
+</header>

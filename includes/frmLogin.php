@@ -4,12 +4,12 @@
         <input type="text" id="email" name="email" value="<?=$email?>" />
     </div>
     <div>
-        <label for="mdp1">Mot de passe :</label>
-        <input type="password" id="mdp1" name="mdp1" />
+        <label for="mdp">Mot de passe :</label>
+        <input type="password" id="mdp" name="mdp" />
     </div>
     <div>
         <input type="reset" value="Effacer" />
-        <input type="submit" value="Se cennecter" />
+        <input type="submit" value="Se connecter" />
     </div>
     <input type="hidden" name="frmLogin" />
 </form>

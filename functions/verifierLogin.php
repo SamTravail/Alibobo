@@ -2,12 +2,17 @@
 
 function verifierLogin($email, $motdepasse) {
     if ($pdo = pdo()) {
-        $motdepasse= password_verify($motdepasse, PASSWORD_DEFAULT);
-        $sql = "SELECT COUNT(*) FROM utilisateurs WHERE email='$email' AND mdp='$motdepasse'";
-        $reponse = $pdo->query($sql);
-        $nbreLigne = $reponse->fetchColumn();
-        if ($nbreLigne > 0) {
-            return true;
+        if (verifierUtilisateur($email)) {
+            $recupMdp = "SELECT mdp FROM utilisateurs WHERE email='$email'";
+            $resultRecupMdp = $pdo->query($recupMdp);
+            $mdpBDD = $resultRecupMdp->fetchAll();
+            $mdpBDD = $mdpBDD[0]['mdp'];
+
+            if (password_verify($motdepasse, $mdpBDD)) 
+                return true;
+            else 
+                return false;
+
         } else {
             return false;
         }
