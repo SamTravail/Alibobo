@@ -5,6 +5,8 @@ autoLoad("*.php");
 
 require __DIR__ . '/vendor/autoload.php';
 
+
+
 // Définir le fuseau horaire dans lequel le serveur se trouve
 date_default_timezone_set('Europe/Paris');
 
