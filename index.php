@@ -7,7 +7,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 session_start();
 
-$_SESSION['message'] = "Il fait chaud";
+/*$_SESSION['message'] = "Il fait chaud";*/
 
 
 // Définir le fuseau horaire dans lequel le serveur se trouve

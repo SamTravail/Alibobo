@@ -9,7 +9,7 @@
     </div>
     <div>
         <input type="reset" value="Effacer" />
-        <input type="submit" value="Envoyer" />
+        <input type="submit" value="Se cennecter" />
     </div>
     <input type="hidden" name="frmLogin" />
 </form>
