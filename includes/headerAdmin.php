@@ -14,13 +14,13 @@
             echo "<p>Bonjour " . $_SESSION['prenom'] . " " . $_SESSION['nom'] . "</p>";
         }
         ?>
-        <h1>Header Admin</h1>
         <nav>
             <ul>
                 <li><a href="index.php?page=accueil">Accueil</a></li>
-                <li><a href="index.php?page=articles">articlesAdmin</a></li>
-                <li><a href="index.php?page=commandes">Commandes</a></li>
-                <li><a href="index.php?page=accueil">Accueil</a></li>
+                <li><a href="index.php?page=categoriesAdmin">Catégories</a></li>
+                <li><a href="index.php?page=articlesAdmin">Articles</a></li>
+                <li><a href="index.php?page=commandesAdmin">Commandes</a></li>
+                <li><a href="index.php?page=clientsAdmin">Clients</a></li>
                 <?php
                 if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
                     echo '<li><a href="index.php?page=logout">Logout</a></li>';
