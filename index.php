@@ -15,9 +15,10 @@ date_default_timezone_set('Europe/Paris');
 * require renvoie une erreur fatale et arrête l'exécution du script
 */
 
-if (verifierAdmin())
-    require_once './includes/headerAdmin.php.php';
-else
-require_once './includes/header.php';
+if (verifierAdmin()) 
+    require_once './includes/headerAdmin.php';
+else 
+    require_once './includes/header.php';
+
 require_once './includes/main.php';
 require_once './includes/footer.php';
