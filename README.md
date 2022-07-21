@@ -1,2 +1,3 @@
-# DWWM-Vernon-2022-PHP-Alibobo
-Projet fil rouge "Alibobo, la boutique des bobos"
+# Alibobo
+Projet fil rouge "Alibobo, le site pour les bobos"
+
