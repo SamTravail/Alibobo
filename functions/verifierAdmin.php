@@ -2,7 +2,7 @@
 
 function verifierAdmin(): bool {
     if (isset($_SESSION['login']) && $_SESSION['login'] === true && $_SESSION['role'] === 'admin') 
-        return true;
+          return true;
     else
         return false;
 }
