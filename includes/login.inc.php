@@ -10,13 +10,13 @@ if (isset($_POST['frmLogin'])) {
 
     if (mb_strlen($email) === 0)
         array_push($erreurs, "Veuillez saisir une adresse mail");
-
+    
     elseif (!(filter_var($email, FILTER_VALIDATE_EMAIL)))
         array_push($erreurs, "Veuillez saisir une adresse conforme");
 
     if (mb_strlen($mdp) === 0)
         array_push($erreurs, "Veuillez saisir un mot de passe");
-
+    
     if (count($erreurs) > 0) {
         $messageErreurs = "<ul>";
 
@@ -44,7 +44,7 @@ if (isset($_POST['frmLogin'])) {
             }
 
             $_SESSION['login'] = true;
-            echo "<script>window.location.replace('http://localhost:8080/DWWM-Vernon-2022-PHP-Alibobo/')</script>";
+            echo "<script>window.location.replace('http://localhost/alibobo/DWWM-Vernon-2022-PHP-Alibobo/index.php?page=accueil')</script>";
         } else {
             echo "Erreur dans votre login/password";
         }
