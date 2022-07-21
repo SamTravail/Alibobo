@@ -1,28 +1,3 @@
-<style>
-    table {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
-        padding-top: 5px;
-    }
-    tr {
-        background-color: seagreen;
-        border: solid 3px red;
-        border-radius: 2%;
-        text-align: center;
-        padding-top: 5px;
-        color: yellow;
-        height: 4vh;
-    }
-
-    th {
-        font-size: large;
-        padding-top: 10px;
-    }
-    td {
-        padding-top: 12px;
-    }
-</style>
 <?php
 
 // Affichage des articles pour les utilisateurs connectés avec les droits admin
@@ -32,7 +7,7 @@ if (verifierAdmin()) {
         $champ = $_GET['champ'] ?? "designation";
         $orderby = $_GET['orderby'] ?? "asc";
 
-        $requeteArticles = "SELECT * FROM articles ORDER BY $champ $orderby";
+        $requeteArticles = "SELECT * FROM articles LEFT JOIN categories ON articles.id_categorie=categories.id_categorie LEFT JOIN tva ON articles.id_tva=tva.id_tva ORDER BY $champ $orderby";
 
         $tableauResultats = "<table>";
         $tableauResultats .= "<thead>";
@@ -59,7 +34,10 @@ if (verifierAdmin()) {
         $tableauResultats .= genererUrl('Quantité en stock', 'qtestock', $champ, $orderby);
         $tableauResultats .= "</th>";
         $tableauResultats .= "<th>";
-        $tableauResultats .= genererUrl('Stock de sécurité', ' 	qtestockesecu ', $champ, $orderby);
+        $tableauResultats .= genererUrl('Stock de sécurité', 'qtestocksecu ', $champ, $orderby);
+        $tableauResultats .= "</th>";
+        $tableauResultats .= "<th colspan=\"2\">";
+        $tableauResultats .= "Opérations";
         $tableauResultats .= "</th>";
         $tableauResultats .= "</tr>";
         $tableauResultats .= "</thead>";
@@ -69,19 +47,17 @@ if (verifierAdmin()) {
 
         foreach($resultatRequeteArticles as $row) {
             $tableauResultats .= "<tr>";
-            $tableauResultats .= "<td>" . $row['id_categorie'] . "</td>";
+            $tableauResultats .= "<td>" . $row['libelle'] . "</td>";
             $tableauResultats .= "<td>" . $row['reference'] . "</td>";
             $tableauResultats .= "<td><a href=\"index.php?page=articleDetailAdmin&amp;articleId=" . $row['id_article'] . "\">" . $row['designation'] . "</a></td>";
-            $tableauResultats .= "<td>" . $row['puht'] . "</td>";
-            $tableauResultats .= "<td>" . $row['id_tva'] . "</td>";
-            $tableauResultats .= "<td>" . $row['masse'] . "</td>";
-            $tableauResultats .= "<td>" . $row['id_categorie'] . "</td>";
-            $tableauResultats .= "<td>" . $row['qtestock'] . "</td>";
-            $tableauResultats .= "<td>" . $row['qtestocksecu'] . "</td>";
-            $tableauResultats .= "<td><a href=\"index.php?page=articleDetailAdmin;articleId="  . "\">" . "Supprimer</a></td>";
-
+            $tableauResultats .= "<td class=\"alignRight\">" . $row['puht'] . "</td>";
+            $tableauResultats .= "<td class=\"alignRight\">" . $row['indice'] . "</td>";
+            $tableauResultats .= "<td class=\"alignRight\">" . $row['masse'] . "</td>";
+            $tableauResultats .= "<td class=\"alignRight\">" . $row['qtestock'] . "</td>";
+            $tableauResultats .= "<td class=\"alignRight\">" . $row['qtestocksecu'] . "</td>";
+            $tableauResultats .= "<td>&Eacute;diter</td>";
+            $tableauResultats .= "<td>Supprimer</td>";
             $tableauResultats .= "</tr>";
-
         }
 
         $tableauResultats .= "</tbody>";
@@ -97,7 +73,7 @@ if (verifierAdmin()) {
     $codeJs .= "
     <script>
         setTimeout(function() {
-            window.location.replace('http://localhost/alibobo/DWWM-Vernon-2022-PHP-Alibobo/index.php?page=accueil')
+            window.location.replace('http://localhost:8080/DWWM-Vernon-2022-PHP-Alibobo/')
         }, 5000);
     </script>
     ";
