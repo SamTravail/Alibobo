@@ -32,6 +32,8 @@ if (isset($_POST['frmLogin'])) {
 
         require './includes/frmLogin.php';
 
+        $insertionSql = new Sql();
+
     } else {
         if (verifierLogin($email,$mdp)) {
             $recupDatasUser = "SELECT * FROM utilisateurs WHERE email='$email'";

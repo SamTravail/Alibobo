@@ -18,4 +18,5 @@ function inscrireUtilisateur(string $nom, string $prenom, string $email, string 
     } else {
         return false;
     }
+
 }

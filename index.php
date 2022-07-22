@@ -20,6 +20,12 @@ date_default_timezone_set('Europe/Paris');
 * require renvoie une erreur fatale et arrête l'exécution du script
 */
 
+$utilisateur1 = new Utilisateur();
+$utilisateur1->setNom("");
+$utilisateur1->setPrenom("");
+$utilisateur1->setEmail("");
+$utilisateur1->insertion();
+
 if (verifierAdmin()) 
     require_once './includes/headerAdmin.php';
 else 
