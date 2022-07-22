@@ -1,9 +1,8 @@
-
 </style>
 
-<h1>Articles</h1>
+<h1>Catégorie</h1>
 
-<form action="index.php?page=articlesAdmin" method="post">
+<form action="index.php?page=categoriesAdmin" method="post">
     <div>
         <label for="designation">designation :</label>
         <input type="text" id="designation" name="designation"/>
@@ -21,8 +20,7 @@
         <input type="text" id="masse" name="masse" />
     </div>
     <div>
-        <input type="submit" value="Editer" />
+        <input type="submit" value="&Eacute;diter" />
         <input type="submit" value="Supprimer" />
     </div>
 </form>
-

@@ -24,9 +24,9 @@ if (verifierAdmin()) {
         foreach($resultatRequeteCategories as $row) {
             $tableauCategories .= "<tr>";
             $tableauCategories .= "<td>" . $row['libelle'] . "</td>";
- //           $tableauCategories .= "<td><a href=\"index.php?page=articleDetailAdmin&amp;articleId=" . $row['id_categorie'] . "\">" . $row['libelle'] . "</a></td>";
-            $tableauCategories .= "<td>&Eacute;diter</td>";
-            $tableauCategories .= "<td>Supprimer</td>";
+  //          $tableauCategories .= "<td><a href=\"index.php?page=articleDetailAdmin&amp;articleId=" . $row['id_categorie'] . "\">" . $row['libelle'] . "</a></td>";
+            $tableauCategories .= "<td><a href=\"index.php?page=update&amp;categorieId=" . $row['id_categorie'] . "\">" . "&Eacute;diter</td>";
+            $tableauCategories .= "<td><a href=\"index.php?page=delete&amp;categorieId=" . $row['id_categorie'] . "\">" .  "Supprimer</a></td>";
             $tableauCategories .= "</tr>";
         }
 

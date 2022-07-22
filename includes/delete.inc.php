@@ -1,4 +1,5 @@
 <?php
+
 // Appel la fonction qui conecte à la BDD
 require('functions/pdo.php');
 
@@ -10,7 +11,6 @@ if(!empty($_GET['id']) && is_numeric($_GET['id'])) {
    $query ->bindValue(':id', $id, PDO::PARAM_INT);
    $query->execute();
    $beer = $query->fetch();
-   
 
 //  verification si l'id dans l'URL existe. s'il existe on fait une requete à la bdd delete
 if(!empty($_GET['id']) && is_numeric($_GET['id'])) {
@@ -32,5 +32,3 @@ if(!empty($_GET['id']) && is_numeric($_GET['id'])) {
     //die('404');
    die("requete impossible. il y a une erreur");
 }
-
- ?>

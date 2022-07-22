@@ -55,8 +55,8 @@ if (verifierAdmin()) {
             $tableauResultats .= "<td class=\"alignRight\">" . $row['masse'] . "</td>";
             $tableauResultats .= "<td class=\"alignRight\">" . $row['qtestock'] . "</td>";
             $tableauResultats .= "<td class=\"alignRight\">" . $row['qtestocksecu'] . "</td>";
-            $tableauResultats .= "<td>&Eacute;diter</td>";
-            $tableauResultats .= "<td>Supprimer</td>";
+            $tableauResultats .= "<td><a href=\"index.php?page=update&amp;articleId=" . $row['id_article'] . "\">" . "&Eacute;diter</td>";
+            $tableauResultats .= "<td><a href=\"index.php?page=delete&amp;articleId=" . $row['id_article'] . "\">" .  "Supprimer</a></td>";
             $tableauResultats .= "</tr>";
         }
 

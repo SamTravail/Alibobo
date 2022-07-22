@@ -16,7 +16,7 @@
 </div>
 <div>
     <label for="puht">Taux de TVA :</label>
-    <input type="text" id="puht" name="puht" />
+    <input type="select" id="puht" name="puht" />
 </div>
 <div>
     <label for="puht">Masse :</label>
