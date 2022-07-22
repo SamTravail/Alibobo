@@ -2,6 +2,11 @@
 
 session_start();
 
+// Fonction permettant le chargement automatique des classes
+spl_autoload_register(function ($className) {
+    require_once './classes/' . $className . '.php';
+});
+
 require_once './functions/autoLoad.php';
 autoLoad("*.php");
 
