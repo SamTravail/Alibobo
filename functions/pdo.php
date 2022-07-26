@@ -13,4 +13,3 @@ function pdo() {
         return false;
     }
 }
-
