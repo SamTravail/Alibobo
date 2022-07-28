@@ -3,4 +3,9 @@ main {
     background-color: #DDD;
     width: 80%;
     margin: 0 auto;
+    background-image: url("");
+}
+
+ul .article {
+    color: aqua;
 }
