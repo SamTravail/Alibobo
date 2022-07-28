@@ -1,3 +1,5 @@
+<h1>Catégorie Admin</h1>
+
 <?php
 
 // Affichage la liste des pour les utilisateurs connectés avec les droits admin

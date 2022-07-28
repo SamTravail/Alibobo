@@ -74,9 +74,10 @@ class Sql
             return false;
     }
     
-    public function __destruct()
-    {   
+/*    public function __destruct()
+    {
         if (isset($this->connexion))
             $this->connexion = null;
     }
+    */
 }

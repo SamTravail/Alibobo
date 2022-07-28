@@ -1,28 +1,58 @@
+<br>
+<h1 style="color: lightseagreen">Liste des Catégories & Articles</h1>
+<br>
 
-</style>
+<?php
 
-<h1>Articles</h1>
+$requeteCategoriesNiveau1 = "
+    SELECT *
+    FROM categories
+    WHERE  categories_id_categorie=0
+    ORDER BY libelle
+";
 
-<form action="index.php?page=articlesAdmin" method="post">
-    <div>
-        <label for="designation">designation :</label>
-        <input type="text" id="designation" name="designation"/>
-    </div>
-    <div>
-        <label for="description">description :</label>
-        <input type="text" id="description" name="description"/>
-    </div>
-    <div>
-        <label for="puht">puht :</label>
-        <input type="text" id="puht" name="puht"/>
-    </div>
-    <div>
-        <label for="masse">Masse</label>
-        <input type="text" id="masse" name="masse" />
-    </div>
-    <div>
-        <input type="submit" value="Editer" />
-        <input type="submit" value="Supprimer" />
-    </div>
-</form>
+$connexionCategories = new Sql();
+
+$resultatCaterogies = $connexionCategories->select($requeteCategoriesNiveau1);
+
+$menuCategories = "<ul>";
+
+for ($i = 0; $i < count($resultatCaterogies); $i++) {
+    $menuCategories .= "<li>";
+    $menuCategories .= "<a href=\"index.php?page=articles&amp;id_categorie=" . $resultatCaterogies[$i]['id_categorie'] . "\">";
+    $menuCategories .= $resultatCaterogies[$i]['libelle'];
+    $menuCategories .= "</a>";
+    $menuCategories .= "</li>";
+}
+
+$menuCategories .= "<ul>";
+
+echo $menuCategories;
+
+if (isset($_GET['id_categorie'])) {
+    $id_categorie = $_GET['id_categorie'];
+
+    $requeteArticlesParCategorie = "
+        SELECT *
+        FROM articles
+        WHERE id_categorie = $id_categorie
+        ORDER BY designation
+    ";
+
+    $connexionArticles = new Sql();
+    $resultatArticles = $connexionArticles->select($requeteArticlesParCategorie);
+
+    $articles = "<ul>";
+
+    for ($i = 0; $i < count($resultatArticles); $i++) {
+        $articles .= "<br>";
+        $articles .= "<li style='color: darkorange'>";
+        $articles .= $resultatArticles[$i]['designation'];
+        $articles .= "</li>";
+    }
+
+    $articles .= "</ul>";
+
+    echo $articles;
+}
 
